@@ -12,6 +12,7 @@ public class UFOSightingMain {
 
 		final BufferedReader in = new BufferedReader(new FileReader("./ufo_awesome.json"));
 
+		@SuppressWarnings("unused")
 		final Gson gson = new Gson();
 		in.close();
 	}

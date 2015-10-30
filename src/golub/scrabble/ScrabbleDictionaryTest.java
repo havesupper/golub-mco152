@@ -9,7 +9,7 @@ public class ScrabbleDictionaryTest {
 
 	@Test
 	public void testScrabbleDictionary() throws IOException {
-		final ScrabbleDictionary word = new ScrabbleDictionary();
+		final ScrabbleDictionary word = ScrabbleDictionary.getInstance();
 		Assert.assertTrue(word.contains("hello"));
 	}
 

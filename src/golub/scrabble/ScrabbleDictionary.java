@@ -7,9 +7,20 @@ import java.util.HashSet;
 
 public class ScrabbleDictionary {
 
+	private static ScrabbleDictionary singleton;
+	
+	public static ScrabbleDictionary getInstance() throws IOException{
+		
+		if (singleton == null){
+			singleton = new ScrabbleDictionary();
+		}
+		
+		return singleton;
+	}
+	
 	private final HashSet<String> dictionary = new HashSet<String>();
 
-	public ScrabbleDictionary() throws IOException {
+	private ScrabbleDictionary() throws IOException {
 
 		try {
 			final BufferedReader input = new BufferedReader(new FileReader("US.dic"));
@@ -27,4 +38,6 @@ public class ScrabbleDictionary {
 	public boolean contains(String word) {
 		return dictionary.contains(word.toLowerCase());
 	}
+	
+	
 }
