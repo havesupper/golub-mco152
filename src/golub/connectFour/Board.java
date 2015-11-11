@@ -80,7 +80,7 @@ public class Board {
 					if (gameBoard[row][column + 3] == gameBoard[row + 1][column + 2]
 							&& gameBoard[row + 1][column + 2] == gameBoard[row + 2][column + 1]
 							&& gameBoard[row + 2][column + 1] == gameBoard[row + 3][column]
-							&& gameBoard[row][column] != 0) {
+							&& gameBoard[row][column+3] != 0) {
 						winner = true;
 						break;
 					}
@@ -96,6 +96,14 @@ public class Board {
 				System.out.print(gameBoard[i][j]);
 			}
 			System.out.print("\n");
+		}
+	}
+	
+	public void reset(){
+		for (int i = 0; i < 6; i++){
+			for (int j = 0; j < 7; j++){
+				gameBoard[i][j] = 0;
+			}
 		}
 	}
 
