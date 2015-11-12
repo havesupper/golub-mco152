@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -127,7 +128,6 @@ public class ConnectFourGui extends JFrame {
 						}
 					}
 				}
-
 			});
 		}
 		for (int i = 0; i < 6; i++){
@@ -149,6 +149,7 @@ public class ConnectFourGui extends JFrame {
 	}
 
 	public static void main(String[] args) {
+		@SuppressWarnings("unused")
 		ConnectFourGui gui = new ConnectFourGui();
 	}
 }
