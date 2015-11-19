@@ -28,16 +28,14 @@ public class ConnectFourGui extends JFrame {
 	private ImageIcon redSlot;
 	private ImageIcon blackSlot;
 	
-	private JFrame frame;
 
 	private int player;
 	private boolean isWinner;
 
 	public ConnectFourGui() {
 
-		frame = new JFrame();
-		this.frame.setTitle("Connect Four");
-		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Connect Four");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(7, 7));
@@ -146,11 +144,11 @@ public class ConnectFourGui extends JFrame {
 		
 		panelTop.add(panel2, BorderLayout.NORTH);
 		panelTop.add(panel, BorderLayout.CENTER);
-		this.frame.getContentPane().add(panelTop);
 		
-		frame.pack();
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
+		getContentPane().add(panelTop);
+		pack();
+		setLocationRelativeTo(null);
+		setVisible(true);
 	}
 
 	
