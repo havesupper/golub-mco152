@@ -21,6 +21,7 @@ public class ConnectFourGui extends JFrame {
 	private JButton[] buttons;
 	private JLabel[][] board;
 	private JButton reset;
+	private BlinkLabel blinker;
 
 	private ImageIcon arrow;
 	private ImageIcon emptySlot;
@@ -64,12 +65,16 @@ public class ConnectFourGui extends JFrame {
 		buttons = new JButton[7];
 		board = new JLabel[6][7];
 		reset = new JButton("RESTART");
+		blinker = new BlinkLabel("");
 		
 		reset.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent a){
 				gameBoard.reset();
 				player = 1;
 				title.setText("Connect Four");
+				blinker.setBlinking(false);
+				blinker.setText("");
+				
 				for (int i = 0; i < 6; i++){
 					for (int j = 0; j < 7; j++){
 						board[i][j].setIcon(emptySlot);
@@ -95,7 +100,7 @@ public class ConnectFourGui extends JFrame {
 									isWinner = gameBoard.isWinner();
 									if (isWinner == true) {
 										title.setText("");
-										BlinkLabel blinker = new BlinkLabel("PLAYER 1 IS WINNER!");
+										blinker.setText("RED IS WINNER!");
 										panel2.add(blinker, BorderLayout.CENTER);
 										blinker.setBlinking(true);
 									}
@@ -116,7 +121,7 @@ public class ConnectFourGui extends JFrame {
 									isWinner = gameBoard.isWinner();
 									if (isWinner == true) {
 										title.setText("");
-										BlinkLabel blinker = new BlinkLabel("PLAYER 2 IS WINNER!");
+										blinker.setText("BLACK IS WINNER!");
 										panel2.add(blinker, BorderLayout.CENTER);
 										blinker.setBlinking(true);
 									}
