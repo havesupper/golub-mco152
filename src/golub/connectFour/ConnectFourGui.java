@@ -148,8 +148,5 @@ public class ConnectFourGui extends JFrame {
 		frame.setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		@SuppressWarnings("unused")
-		ConnectFourGui gui = new ConnectFourGui();
-	}
+	
 }
