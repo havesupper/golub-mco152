@@ -1,4 +1,4 @@
-package ups;
+package golub.ups;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,9 +18,11 @@ public class UPSDatabaseTest {
 		UPSDatabase data = new UPSDatabase();
 		Location location = new Location(100, 100);
 		Package p = new Package("123track");
+		HashSet<Package> packages = new HashSet<Package>();
+		packages.add(p);
 		data.addPackageToLocation(location, p);
-		Assert.assertTrue(data.getPackages(location) == p);
-		Assert.assertTrue(data.getLocation(p) == location);
+		Assert.assertEquals(location, data.getLocation(p));
+		Assert.assertEquals(packages, data.getPackages(location));
 	}
 	
 	@Test 
@@ -35,11 +37,13 @@ public class UPSDatabaseTest {
 		Location location = new Location(100,100);
 		Location location2 = new Location(150,150);
 		Package pck = new Package("tracker");
+		HashSet<Package> packages = new HashSet<Package>();
+		packages.add(pck);
 		data.addPackageToLocation(location, pck);
 		data.updatePackageLocation(pck, location2);
-		Assert.assertTrue(data.getPackages(location2)==pck);
-		Assert.assertTrue(data.getLocation(pck)==location2);
-		Assert.assertFalse(data.getLocation(pck)==location);
+		Assert.assertEquals(packages, data.getPackages(location2));
+		Assert.assertNotEquals(packages, data.getPackages(location));
+		Assert.assertEquals(location2, data.getLocation(pck));
 	}
 	
 	@Test
@@ -50,7 +54,7 @@ public class UPSDatabaseTest {
 	public void testGetPackagesReturnsAnEmptySet() {
 		UPSDatabase data = new UPSDatabase();
 		Location location = new Location(10,10);
-		Set<Package> packages = new HashSet<Package>();
+		HashSet<Package> packages = new HashSet<Package>();
 		Assert.assertEquals(packages, data.getPackages(location));
 	}
 	

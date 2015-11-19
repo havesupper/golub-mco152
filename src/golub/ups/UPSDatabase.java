@@ -1,4 +1,4 @@
-package ups;
+package golub.ups;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -10,9 +10,11 @@ import java.util.Set;
 public class UPSDatabase {
 	
 	private HashMap<Package, Location> map;
+	private HashMap<Location, HashSet<Package>> mapLP;
 	
 	public UPSDatabase(){
 		map = new HashMap<Package, Location>();
+		mapLP = new HashMap<Location, HashSet<Package>>();
 	}
 
 	/**
@@ -20,14 +22,30 @@ public class UPSDatabase {
 	 */
 	public void addPackageToLocation( Location location, Package pkg ) {
 		map.put(pkg, location);
+		if (mapLP.containsKey(location)){
+			HashSet<Package> p = mapLP.get(location);
+			p.add(pkg);
+			mapLP.put(location, p);
+		}
+		else{
+			HashSet<Package> p = new HashSet<Package>();
+			p.add(pkg);
+			mapLP.put(location, p);
+		}
 	}
 	
 	/**
 	 * Update a Package's Location.
 	 */
 	public void updatePackageLocation( Package pkg, Location location ) {
-		map.get(pkg);
+		Location l = getLocation(pkg);
+		HashSet<Package> p = mapLP.get(l);
+		p.remove(pkg);
+		mapLP.put(l, p);
+		
+		addPackageToLocation(location, pkg);
 		map.put(pkg, location);
+		
 	}
 	
 	/**
@@ -35,11 +53,10 @@ public class UPSDatabase {
 	 * the Location doesn't exist or there are no Packages at that Location.
 	 */
 	public Set<Package> getPackages( Location location ) {
-		HashMap<Location, HashSet<Package> > m= new HashMap<Location, HashSet<Package>>();
-		Set<Package> packages = map.keySet();
-		Set<Package> p = new HashSet<Package>();
-		
-		return p;
+		if (mapLP.get(location) == null) {
+			return new HashSet<Package>();
+		}
+		return mapLP.get(location);
 	}
 	
 	/**

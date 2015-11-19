@@ -1,4 +1,4 @@
-package ups;
+package golub.ups;
 
 public class Location {
 
