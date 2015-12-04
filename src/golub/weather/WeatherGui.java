@@ -4,7 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,11 +22,11 @@ public class WeatherGui extends JFrame{
 	
 	public WeatherGui(){
 		setTitle("Weather by Zip");
-		setSize(600, 800);
+		setSize(200, 300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Container container = getContentPane();
-		setLayout(new BorderLayout());
+		setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
 		
 		enterZip = new JLabel("Please Enter Zip");
 		zip = new JTextField();
@@ -38,7 +40,20 @@ public class WeatherGui extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				WeatheAccess w;
+				try {
+					WeatherReport wr = new WeatherReport(zip.getText());
+					description = new JLabel(wr.getDescription());
+					temp = new JLabel("Temperature is " + String.valueOf(wr.getTemp()));
+					
+					
+					
+					
+					add(description);
+					add(temp);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 			}
 			
