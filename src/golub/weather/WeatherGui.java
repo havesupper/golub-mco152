@@ -1,6 +1,7 @@
 package golub.weather;
 
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,26 +35,29 @@ public class WeatherGui extends JFrame{
 		
 		enterZip = new JLabel("Please Enter Zip");
 		zip = new JTextField();
+		Dimension d = new Dimension(400,150);
+		zip.setMaximumSize(d);
 		compute = new JButton("Find Out Weather");
+		description = new JLabel();
+		temp = new JLabel();
+		icon = new JLabel();
 		
 		add(enterZip);
 		add(zip);
 		add(compute);
-		
+		add(description);
+		add(temp);
+		add(icon);
 		compute.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					WeatherReport wr = new WeatherReport(zip.getText());
-					description = new JLabel(wr.getDescription());
-					temp = new JLabel("Temperature is " + String.valueOf(wr.getTemp()));
-					
-					add(description);
-					add(temp);
+					description.setText(wr.getDescription());
+					temp.setText("Temperature is " + String.valueOf(wr.getTemp()));
 					
 					StringBuilder builder = new StringBuilder();
-
 					builder.append("http://openweathermap.org/img/w/");
 					builder.append(wr.getIcon());
 					builder.append(".png");
@@ -62,21 +66,14 @@ public class WeatherGui extends JFrame{
 					Image image = ImageIO.read(url);
 					ImageIcon weatherImage = new ImageIcon(image);
 					
-					icon = new JLabel();
 					icon.setIcon(weatherImage);
 					
-					add(icon);
 				} catch (IOException e) {
 					JLabel errorMsg = new JLabel("Error: Could not connect to internet.");
 					add(errorMsg);
-				}
-				
-			}
-			
-			
+				}	
+			}	
 		});
-		
-		
 	}
 	
 	public static void main(String[]args){
