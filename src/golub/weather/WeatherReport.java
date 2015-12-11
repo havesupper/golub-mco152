@@ -32,23 +32,23 @@ public class WeatherReport {
 		Gson gson = new Gson();
 		CurrentWeather cw = gson.fromJson(buffer, CurrentWeather.class);
 
-
 		Weather[] weather = cw.getWeather();
 		Main main = cw.getMain();
 
-		
 		this.description = weather[0].getDescription();
 		this.icon = weather[0].getIcon();
 		this.temp = main.getTemp();
 	}
-	
-	public String getDescription(){
+
+	public String getDescription() {
 		return this.description;
 	}
-	public String getIcon(){
+
+	public String getIcon() {
 		return this.icon;
 	}
-	public double getTemp(){
+
+	public double getTemp() {
 		return this.temp;
 	}
 }
