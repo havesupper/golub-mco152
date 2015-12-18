@@ -1,12 +1,15 @@
 package golub.contacts;
 
 import java.awt.Container;
+
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JList;
 
 public class ContactsGui extends JFrame {
 
+	
+	private static final long serialVersionUID = 1L;
 	private JList list;
 
 	public ContactsGui() {
