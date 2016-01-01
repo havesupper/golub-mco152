@@ -10,7 +10,7 @@ public class ContactsGui extends JFrame {
 
 	
 	private static final long serialVersionUID = 1L;
-	private JList list;
+	private JList<Contact> list;
 
 	public ContactsGui() {
 		setTitle("Contact List");
@@ -20,7 +20,7 @@ public class ContactsGui extends JFrame {
 		Container container = getContentPane();
 		setLayout(new BoxLayout(container, BoxLayout.Y_AXIS));
 
-		list = new JList();
+		list = new JList<Contact>();
 
 		ContactThread ct = new ContactThread(list);
 		ct.start();
