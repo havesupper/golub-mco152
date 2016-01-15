@@ -15,8 +15,6 @@ public class SearchOnlinePic {
 
 	public SearchOnlinePic(String picUrl) throws IOException {
 
-	
-
 		URL url = new URL(picUrl);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setRequestProperty("Authorization", "Token token=\"jkxnw6o25k3o5cd2\"");

@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.ListModel;
 
 public class NyplGui extends JFrame {
@@ -50,7 +51,7 @@ public class NyplGui extends JFrame {
 
 		list = new JList<SearchResult>();
 		picture = new JLabel();
-		
+
 		searchBox.addActionListener(new ActionListener() {
 
 			@Override
@@ -69,14 +70,13 @@ public class NyplGui extends JFrame {
 						Component renderer = super.getListCellRendererComponent(list, value, index, isSelected,
 								cellHasFocus);
 						if (renderer instanceof JLabel && value instanceof SearchResult) {
-							if (((SearchResult) value).getTitle().length()>30){
-								String temp = ((SearchResult)value).getTitle();
+							if (((SearchResult) value).getTitle().length() > 30) {
+								String temp = ((SearchResult) value).getTitle();
 								String letters = temp.substring(0, Math.min(temp.length(), 30));
 								((JLabel) renderer).setText(letters);
-								
-							}
-							else{
-							((JLabel) renderer).setText(((SearchResult) value).getTitle());
+
+							} else {
+								((JLabel) renderer).setText(((SearchResult) value).getTitle());
 							}
 						}
 						return renderer;
@@ -106,14 +106,13 @@ public class NyplGui extends JFrame {
 						Component renderer = super.getListCellRendererComponent(list, value, index, isSelected,
 								cellHasFocus);
 						if (renderer instanceof JLabel && value instanceof SearchResult) {
-							if (((SearchResult) value).getTitle().length()>30){
-								String temp = ((SearchResult)value).getTitle();
+							if (((SearchResult) value).getTitle().length() > 30) {
+								String temp = ((SearchResult) value).getTitle();
 								String letters = temp.substring(0, Math.min(temp.length(), 30));
 								((JLabel) renderer).setText(letters);
-								
-							}
-							else{
-							((JLabel) renderer).setText(((SearchResult) value).getTitle());
+
+							} else {
+								((JLabel) renderer).setText(((SearchResult) value).getTitle());
 							}
 						}
 						return renderer;
@@ -135,6 +134,7 @@ public class NyplGui extends JFrame {
 					url = item.getApiItemURL();
 					ImageThread Ithread = new ImageThread(picture, url, index);
 					Ithread.start();
+
 				}
 			}
 		});

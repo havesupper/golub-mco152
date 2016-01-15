@@ -29,17 +29,15 @@ public class SearchThread extends Thread{
 		response = nyplapi.getResponse();
 		results = response.getResult();
 		list.setListData(results);
-		/*title = new String[results.length];
-		for (int i = 0; i < results.length; i++){
-			title[i] = results[i].getTitle();
-			if (title[i].length() > 30){
-			String temp = title[i];
-			String letters = temp.substring(0, Math.min(temp.length(), 30));
-			title[i] = letters;
-		}
-		}
-		
-		list.setListData(title);*/
+			/*
+			 * title = new String[results.length]; for (int i = 0; i <
+			 * results.length; i++){ title[i] = results[i].getTitle(); if
+			 * (title[i].length() > 30){ String temp = title[i]; String letters
+			 * = temp.substring(0, Math.min(temp.length(), 30)); title[i] =
+			 * letters; } }
+			 * 
+			 * list.setListData(title);
+			 */
 		}
 		catch(IOException e){
 			e.printStackTrace();

@@ -7,5 +7,5 @@ public class NYPLAPI {
 	public Response getResponse() {
 		return response;
 	}
-	
+
 }
